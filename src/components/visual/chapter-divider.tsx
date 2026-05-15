@@ -14,8 +14,16 @@ export function ChapterDivider({ chapter, index, tone = "calm" }: { chapter: str
       <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent" />
       <div className="flex items-end justify-between gap-6">
         <div>
-          <p className="text-xs tracking-[0.35em] text-zinc-300">CHAPTER {String(index + 1).padStart(2, "0")}</p>
-          <motion.h2 className="mt-3 text-2xl font-semibold text-white md:text-4xl" initial={{ letterSpacing: "0.22em" }} whileInView={{ letterSpacing: "0.01em" }} transition={{ duration: 1.1 }}>
+          <p dir="ltr" className="bidi-ltr text-xs tracking-[0.35em] text-zinc-300">
+            CHAPTER {String(index + 1).padStart(2, "0")}
+          </p>
+          <motion.h2
+            dir="ltr"
+            className="bidi-ltr mt-3 text-2xl font-semibold text-white md:text-4xl"
+            initial={{ letterSpacing: "0.22em" }}
+            whileInView={{ letterSpacing: "0.01em" }}
+            transition={{ duration: 1.1 }}
+          >
             {chapter}
           </motion.h2>
         </div>

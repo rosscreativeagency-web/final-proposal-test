@@ -30,7 +30,7 @@ export function KineticHeadline({ text, className }: { text: string; className?:
   }, []);
 
   return (
-    <h1 ref={ref} className={className}>
+    <h1 ref={ref} dir="ltr" className={`bidi-ltr ${className ?? ""}`.trim()}>
       {text}
     </h1>
   );

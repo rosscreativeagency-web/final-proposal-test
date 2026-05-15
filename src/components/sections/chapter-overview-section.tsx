@@ -26,7 +26,9 @@ export function ChapterOverviewSection({ chapter }: { chapter: Chapter }) {
 
         <div className="relative z-10 grid gap-8 md:grid-cols-[1.2fr_1fr]">
           <Reveal className="space-y-6">
-            <h2 className="max-w-2xl text-3xl font-semibold text-[#36302b] md:text-4xl">{chapter.englishTitle}</h2>
+            <h2 dir="ltr" className="bidi-ltr max-w-2xl text-3xl font-semibold text-[#36302b] md:text-4xl">
+              {chapter.englishTitle}
+            </h2>
             <p className="max-w-3xl border-s-2 border-[var(--color-accent-soft)] ps-5 text-lg leading-9 text-[#57514b]">
               {chapter.persianNarrative}
             </p>
@@ -34,7 +36,9 @@ export function ChapterOverviewSection({ chapter }: { chapter: Chapter }) {
 
           <Reveal>
             <SoftMask className="bg-white/55 p-7 shadow-[0_8px_32px_rgba(117,104,96,0.16)] backdrop-blur-md">
-              <h3 className="text-2xl font-semibold text-[#2f2b27]">{chapter.sections?.[0]?.englishHeading}</h3>
+              <h3 dir="ltr" className="bidi-ltr text-2xl font-semibold text-[#2f2b27]">
+                {chapter.sections?.[0]?.englishHeading}
+              </h3>
               <p className="mt-4 text-[#69625c]">{chapter.sections?.[0]?.persianLead}</p>
               <ul className="mt-5">{renderBullets(chapter.sections?.[0]?.bullets ?? [])}</ul>
             </SoftMask>

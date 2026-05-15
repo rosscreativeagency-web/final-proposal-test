@@ -34,3 +34,8 @@ body {
   overflow-x: hidden;
   transition: background-color var(--motion-slow) var(--motion-ease), color var(--motion-base) var(--motion-ease);
 }
+
+.bidi-ltr {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
