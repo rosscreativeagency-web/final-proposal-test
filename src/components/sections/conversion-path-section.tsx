@@ -18,11 +18,11 @@ export function ConversionPathSection({ advertising, sell, index }: { advertisin
         <Reveal className="grid gap-6 md:grid-cols-2">
           <div>
             <h2 className="text-3xl font-semibold">{advertising.englishTitle}</h2>
-            <p className="mt-4 text-zinc-100/95">{advertising.persianNarrative}</p>
+            <p className="mt-4 leading-10 text-[var(--text-primary)]/95">{advertising.persianNarrative}</p>
           </div>
           <div className="md:pt-8">
             <h2 className="text-3xl font-semibold">{sell.englishTitle}</h2>
-            <p className="mt-4 text-zinc-100/95">{sell.persianNarrative}</p>
+            <p className="mt-4 leading-10 text-[var(--text-primary)]/95">{sell.persianNarrative}</p>
           </div>
         </Reveal>
 
@@ -44,8 +44,8 @@ export function ConversionPathSection({ advertising, sell, index }: { advertisin
               className="border-s border-white/25 ps-5"
             >
               <h3 className="text-xl font-semibold">{section.englishHeading}</h3>
-              {section.persianLead ? <p className="mt-3 text-zinc-300">{section.persianLead}</p> : null}
-              <ul className="mt-3 space-y-2 text-sm text-zinc-200 md:text-base">{section.bullets.map((bullet) => <li key={bullet}>• {bullet}</li>)}</ul>
+              {section.persianLead ? <p className="mt-3 leading-9 text-[var(--text-secondary)]">{section.persianLead}</p> : null}
+              <ul className="mt-3 space-y-2 text-sm leading-8 text-[var(--text-secondary)] md:text-base">{section.bullets.map((bullet) => <li key={bullet}>• {bullet}</li>)}</ul>
             </motion.article>
           ))}
           {sellSections.map((section, idx) => (
@@ -56,8 +56,8 @@ export function ConversionPathSection({ advertising, sell, index }: { advertisin
               className="md:ps-8"
             >
               <h3 className="text-xl font-semibold">{section.englishHeading}</h3>
-              {section.persianLead ? <p className="mt-3 text-zinc-300">{section.persianLead}</p> : null}
-              <ul className="mt-3 space-y-2 text-sm text-zinc-200 md:text-base">{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+              {section.persianLead ? <p className="mt-3 leading-9 text-[var(--text-secondary)]">{section.persianLead}</p> : null}
+              <ul className="mt-3 space-y-2 text-sm leading-8 text-[var(--text-secondary)] md:text-base">{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
             </motion.article>
           ))}
         </motion.div>

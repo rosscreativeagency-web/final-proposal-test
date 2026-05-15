@@ -16,8 +16,8 @@ export function PositioningNarrativeSection({ chapter, index }: { chapter: Chapt
       <ChapterTransition className="space-y-8">
         <Reveal className="space-y-5">
           <h2 className="text-3xl font-semibold md:text-4xl">{chapter.englishTitle}</h2>
-          {chapter.persianNarrative ? <p className="max-w-4xl text-lg leading-9 text-zinc-100/95">{chapter.persianNarrative}</p> : null}
-          {phase ? <p className="text-zinc-200">{phase.persianLead}</p> : null}
+          {chapter.persianNarrative ? <p className="max-w-4xl text-lg leading-10 text-[var(--text-primary)]/95">{chapter.persianNarrative}</p> : null}
+          {phase ? <p className="leading-9 text-[var(--text-secondary)]">{phase.persianLead}</p> : null}
         </Reveal>
 
         <ProposalBleed className="chapter-overlap-top">
@@ -34,8 +34,8 @@ export function PositioningNarrativeSection({ chapter, index }: { chapter: Chapt
                   className={idx ? "md:mt-14" : ""}
                 >
                   <h3 className="text-2xl font-semibold">{section.englishHeading}</h3>
-                  {section.persianLead ? <p className="mt-3 text-zinc-300">{section.persianLead}</p> : null}
-                  <ul className="mt-4 space-y-2 text-sm text-zinc-200 md:text-base">{section.bullets.map((bullet) => <li key={bullet}>• {bullet}</li>)}</ul>
+                  {section.persianLead ? <p className="mt-3 leading-9 text-[var(--text-secondary)]">{section.persianLead}</p> : null}
+                  <ul className="mt-4 space-y-2 text-sm leading-8 text-[var(--text-secondary)] md:text-base">{section.bullets.map((bullet) => <li key={bullet}>• {bullet}</li>)}</ul>
                 </motion.div>
               ) : null,
             )}
@@ -53,10 +53,10 @@ export function PositioningNarrativeSection({ chapter, index }: { chapter: Chapt
                 transition={{ type: "spring", stiffness: 120, damping: 18, delay: idx * 0.12 }}
                 className="bg-white/5 p-6"
               >
-                <p className="text-xs uppercase tracking-[0.2em] text-zinc-400">Flow block {idx + 1}</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]/80">Flow block {idx + 1}</p>
                 <h3 className="mt-2 text-2xl font-semibold">{section.englishHeading}</h3>
-                {section.persianLead ? <p className="mt-3 text-zinc-300">{section.persianLead}</p> : null}
-                <ul className="mt-4 space-y-2 text-sm text-zinc-200 md:text-base">{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+                {section.persianLead ? <p className="mt-3 leading-9 text-[var(--text-secondary)]">{section.persianLead}</p> : null}
+                <ul className="mt-4 space-y-2 text-sm leading-8 text-[var(--text-secondary)] md:text-base">{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
               </motion.div>
             ) : null,
           )}

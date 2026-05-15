@@ -17,8 +17,8 @@ export function KpiOutcomeSection({ kpi, outcome, index }: { kpi: Chapter; outco
       <ChapterTransition className="space-y-8">
         <Reveal className="space-y-4">
           <h2 className="text-3xl font-semibold md:text-4xl">{kpi.englishTitle} + {outcome.englishTitle}</h2>
-          <p className="max-w-4xl text-zinc-100/95">{kpi.persianNarrative}</p>
-          <p className="max-w-4xl text-zinc-100/95">{outcome.persianNarrative}</p>
+          <p className="max-w-4xl leading-10 text-[var(--text-primary)]/95">{kpi.persianNarrative}</p>
+          <p className="max-w-4xl leading-10 text-[var(--text-primary)]/95">{outcome.persianNarrative}</p>
         </Reveal>
 
         <ProposalBleed className="chapter-overlap-top">
@@ -32,10 +32,10 @@ export function KpiOutcomeSection({ kpi, outcome, index }: { kpi: Chapter; outco
           {kpiSection ? (
             <motion.div initial={{ opacity: 0, rotateX: 10 }} whileInView={{ opacity: 1, rotateX: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.7 }}>
               <h3 className="text-2xl font-semibold">{kpiSection.englishHeading}</h3>
-              {kpiSection.persianLead ? <p className="mt-3 text-zinc-300">{kpiSection.persianLead}</p> : null}
+              {kpiSection.persianLead ? <p className="mt-3 leading-9 text-[var(--text-secondary)]">{kpiSection.persianLead}</p> : null}
               <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-3">
                 {kpiSection.bullets.map((metric) => (
-                  <div key={metric} className="bg-white/10 px-4 py-5 text-center text-sm font-medium md:text-base">{metric}</div>
+                  <div key={metric} className="bg-white/10 px-4 py-5 text-center text-sm font-medium text-[var(--text-kpi)] md:text-base">{metric}</div>
                 ))}
               </div>
             </motion.div>
@@ -44,8 +44,8 @@ export function KpiOutcomeSection({ kpi, outcome, index }: { kpi: Chapter; outco
           {outcomeSection ? (
             <motion.div initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.65, ease: "easeOut" }} className="self-end">
               <h3 className="text-2xl font-semibold">{outcomeSection.englishHeading}</h3>
-              {outcomeSection.persianLead ? <p className="mt-3 text-zinc-300">{outcomeSection.persianLead}</p> : null}
-              <ul className="mt-4 space-y-2 text-sm text-zinc-200 md:text-base">{outcomeSection.bullets.map((bullet) => <li key={bullet}>→ {bullet}</li>)}</ul>
+              {outcomeSection.persianLead ? <p className="mt-3 leading-9 text-[var(--text-secondary)]">{outcomeSection.persianLead}</p> : null}
+              <ul className="mt-4 space-y-2 text-sm leading-8 text-[var(--text-secondary)] md:text-base">{outcomeSection.bullets.map((bullet) => <li key={bullet}>→ {bullet}</li>)}</ul>
             </motion.div>
           ) : null}
         </div>
