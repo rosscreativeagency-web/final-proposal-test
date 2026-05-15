@@ -4,6 +4,19 @@
 :root {
   --background: #f7f3ec;
   --foreground: #080808;
+
+  --color-accent: #6ee7b7;
+  --color-accent-soft: #bbf7d0;
+  --color-surface: #0b0f19;
+
+  --space-inline: clamp(1.25rem, 2vw, 2.5rem);
+  --space-block: clamp(1.5rem, 2.75vw, 3rem);
+  --space-section: clamp(4rem, 9vw, 8rem);
+
+  --motion-quick: 160ms;
+  --motion-base: 320ms;
+  --motion-slow: 540ms;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html {
@@ -17,4 +30,6 @@ body {
   color: var(--foreground);
   font-family: var(--font-peyda), sans-serif;
   overflow-x: hidden;
+  transition: background-color var(--motion-base) var(--motion-ease),
+    color var(--motion-base) var(--motion-ease);
 }

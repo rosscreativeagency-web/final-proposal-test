@@ -14,14 +14,22 @@ const peyda = localFont({
     { path: "../../public/fonts/peyda/Peyda-SemiBold.ttf", weight: "600", style: "normal" },
     { path: "../../public/fonts/peyda/Peyda-Bold.ttf", weight: "700", style: "normal" },
     { path: "../../public/fonts/peyda/Peyda-ExtraBold.ttf", weight: "800", style: "normal" },
-    { path: "../../public/fonts/peyda/Peyda-Black.ttf", weight: "900", style: "normal" }
+    { path: "../../public/fonts/peyda/Peyda-Black.ttf", weight: "900", style: "normal" },
   ],
   variable: "--font-peyda",
 });
 
 export const metadata: Metadata = {
-  title: "Final Proposal Test",
-  description: "Interactive proposal experience for ROSS Creative Agency",
+  title: "SPM Strategic Growth Proposal | ROSS Creative Agency",
+  description:
+    "An RTL-first interactive proposal presenting ROSS Creative Agency's strategic path for SPM brand awareness, positioning, and revenue growth.",
+  openGraph: {
+    title: "SPM Strategic Growth Proposal",
+    description:
+      "Interactive strategic proposal for SPM by ROSS Creative Agency, designed for narrative clarity, campaign sequencing, and measurable growth.",
+    type: "website",
+    locale: "fa_IR",
+  },
 };
 
 export default function RootLayout({
@@ -31,7 +39,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={`${peyda.variable} antialiased`}><LenisProvider><ProgressIndicator />{children}</LenisProvider></body>
+      <body className={`${peyda.variable} antialiased`}>
+        <LenisProvider>
+          <ProgressIndicator />
+          {children}
+        </LenisProvider>
+      </body>
     </html>
   );
 }
