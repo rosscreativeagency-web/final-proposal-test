@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ChapterTransition, Reveal } from "@/components/motion/primitives";
 import { ChapterDivider } from "@/components/visual/chapter-divider";
+import { CampaignMockupZonePlaceholder, ProductShotZonePlaceholder } from "@/components/visual/media-placeholders";
 import { type Chapter } from "@/data/proposal";
 
 export function ConversionPathSection({ advertising, sell, index }: { advertising: Chapter; sell: Chapter; index: number }) {
@@ -23,6 +24,11 @@ export function ConversionPathSection({ advertising, sell, index }: { advertisin
             <p className="mt-4 text-zinc-100/95">{sell.persianNarrative}</p>
           </div>
         </Reveal>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          <CampaignMockupZonePlaceholder />
+          <ProductShotZonePlaceholder />
+        </div>
 
         <motion.div className="grid gap-4 md:grid-cols-2" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
           {adSections.map((section, idx) => (

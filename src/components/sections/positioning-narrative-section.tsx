@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ChapterTransition, Reveal } from "@/components/motion/primitives";
 import { ChapterDivider } from "@/components/visual/chapter-divider";
+import { LayeredEditorialStackPlaceholder } from "@/components/visual/media-placeholders";
 import { type Chapter } from "@/data/proposal";
 
 export function PositioningNarrativeSection({ chapter, index }: { chapter: Chapter; index: number }) {
@@ -19,6 +20,7 @@ export function PositioningNarrativeSection({ chapter, index }: { chapter: Chapt
         </Reveal>
 
         <div className="grid gap-8 md:grid-cols-[1fr_1.25fr]">
+          <LayeredEditorialStackPlaceholder />
           {[goals, methods].map((section) =>
             section ? (
               <motion.div
