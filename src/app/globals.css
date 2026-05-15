@@ -2,21 +2,23 @@
 @import "tw-animate-css";
 
 :root {
-  --background: #f7f3ec;
-  --foreground: #080808;
+  --background: #f6f1e8;
+  --foreground: #4b4540;
 
-  --color-accent: #6ee7b7;
-  --color-accent-soft: #bbf7d0;
-  --color-surface: #0b0f19;
+  --color-accent: #c8938e;
+  --color-accent-soft: #e7cbc7;
+  --color-accent-mint: #b8cfc6;
+  --color-surface: #fbf7f1;
+  --color-surface-soft: #f1e8dc;
 
   --space-inline: clamp(1.25rem, 2vw, 2.5rem);
   --space-block: clamp(1.5rem, 2.75vw, 3rem);
   --space-section: clamp(4rem, 9vw, 8rem);
 
-  --motion-quick: 160ms;
-  --motion-base: 320ms;
-  --motion-slow: 540ms;
-  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-quick: 220ms;
+  --motion-base: 420ms;
+  --motion-slow: 760ms;
+  --motion-ease: cubic-bezier(0.24, 0.88, 0.32, 1);
 }
 
 html {
@@ -26,10 +28,9 @@ html {
 
 body {
   margin: 0;
-  background: var(--background);
+  background: radial-gradient(circle at 5% 8%, #fff8ef 0%, var(--background) 42%), var(--background);
   color: var(--foreground);
   font-family: var(--font-peyda), sans-serif;
   overflow-x: hidden;
-  transition: background-color var(--motion-base) var(--motion-ease),
-    color var(--motion-base) var(--motion-ease);
+  transition: background-color var(--motion-slow) var(--motion-ease), color var(--motion-base) var(--motion-ease);
 }

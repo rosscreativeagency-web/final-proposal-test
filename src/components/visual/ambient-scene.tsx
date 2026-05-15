@@ -22,33 +22,33 @@ function usePointerOffset() {
 
 export function AmbientScene() {
   const point = usePointerOffset();
-  const sx = useSpring(point.x, { stiffness: 60, damping: 20 });
-  const sy = useSpring(point.y, { stiffness: 60, damping: 20 });
+  const sx = useSpring(point.x, { stiffness: 42, damping: 28 });
+  const sy = useSpring(point.y, { stiffness: 42, damping: 28 });
   const { scrollYProgress } = useScroll();
-  const drift = useTransform(scrollYProgress, [0, 1], [0, -180]);
+  const drift = useTransform(scrollYProgress, [0, 1], [0, -90]);
 
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#05070f]">
+    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[var(--background)]">
       <motion.div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(circle at 20% 20%, rgba(59,130,246,0.25), transparent 40%), radial-gradient(circle at 70% 10%, rgba(20,184,166,0.2), transparent 45%), radial-gradient(circle at 50% 80%, rgba(244,114,182,0.16), transparent 50%)",
+            "radial-gradient(circle at 18% 16%, rgba(234,204,192,0.4), transparent 38%), radial-gradient(circle at 78% 12%, rgba(188,210,202,0.36), transparent 42%), radial-gradient(circle at 52% 82%, rgba(217,200,226,0.24), transparent 48%)",
           y: drift,
         }}
       />
 
       <motion.div
-        className="absolute -left-24 top-16 h-96 w-96 rounded-full bg-cyan-400/15 blur-3xl"
-        style={{ x: useTransform(sx, (value) => value * -120), y: useTransform(sy, (value) => value * -80) }}
+        className="absolute -left-20 top-12 h-80 w-80 rounded-full bg-rose-200/30 blur-3xl"
+        style={{ x: useTransform(sx, (value) => value * -72), y: useTransform(sy, (value) => value * -52) }}
       />
       <motion.div
-        className="absolute right-[-8rem] top-1/3 h-[28rem] w-[28rem] rounded-full bg-fuchsia-400/20 blur-3xl"
-        style={{ x: useTransform(sx, (value) => value * 130), y: useTransform(sy, (value) => value * 70) }}
+        className="absolute right-[-7rem] top-1/3 h-[24rem] w-[24rem] rounded-full bg-emerald-200/28 blur-3xl"
+        style={{ x: useTransform(sx, (value) => value * 84), y: useTransform(sy, (value) => value * 56) }}
       />
 
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02),rgba(5,7,15,0.6)_65%)]" />
-      <div className="absolute inset-0 backdrop-blur-[2px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.22),rgba(246,241,232,0.6)_65%)]" />
+      <div className="absolute inset-0 backdrop-blur-[1px]" />
     </div>
   );
 }

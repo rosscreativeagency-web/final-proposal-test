@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export function ProposalShell({ children }: { children: React.ReactNode }) {
   return (
-    <motion.main className="relative text-zinc-100" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+    <motion.main className="relative text-[color:var(--foreground)]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <AmbientScene />
       {children}
     </motion.main>
