@@ -22,7 +22,7 @@ const customRenderedIds = new Set(["audience", "structure", "positioning", "adve
 const defaultChapters = proposalChapters.filter((chapter) => chapter.id !== "introduction" && !customRenderedIds.has(chapter.id));
 
 const renderBullets = (items: string[]) => (
-  <Stagger className="mt-4 space-y-2 text-sm leading-7 text-zinc-200 md:text-base">
+  <Stagger className="mt-4 space-y-2 text-sm leading-8 text-[var(--text-secondary)] md:text-base">
     {items.map((item) => (
       <StaggerItem key={item}>
         <li className="flex gap-3">
@@ -56,14 +56,14 @@ export default function Home() {
               <Reveal className="grid gap-6 md:grid-cols-[1.2fr_1fr] md:items-start">
                 <div>
                   <h2 className="text-3xl font-semibold">{chapter.englishTitle}</h2>
-                  {chapter.persianNarrative ? <p className="mt-5 text-lg leading-9 text-zinc-100/95">{chapter.persianNarrative}</p> : null}
+                  {chapter.persianNarrative ? <p className="mt-5 text-lg leading-10 text-[var(--text-primary)]/95">{chapter.persianNarrative}</p> : null}
                 </div>
               </Reveal>
               <div className="grid gap-8 md:grid-cols-2">
                 {(chapter.sections ?? []).map((section, sectionIndex) => (
                   <Reveal key={`${chapter.id}-${section.englishHeading}`} className={sectionIndex % 2 ? "md:pt-8" : ""}>
                     <h3 className="text-2xl font-semibold">{section.englishHeading}</h3>
-                    {section.persianLead ? <p className="mt-4 text-zinc-200">{section.persianLead}</p> : null}
+                    {section.persianLead ? <p className="mt-4 leading-9 text-[var(--text-secondary)]">{section.persianLead}</p> : null}
                     <ul>{renderBullets(section.bullets)}</ul>
                   </Reveal>
                 ))}

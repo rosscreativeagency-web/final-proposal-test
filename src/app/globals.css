@@ -10,6 +10,10 @@
   --color-accent-mint: #b8cfc6;
   --color-surface: #fbf7f1;
   --color-surface-soft: #f1e8dc;
+  --text-primary: #f6efe7;
+  --text-secondary: #dfd0bf;
+  --text-muted: #c0ac97;
+  --text-kpi: #f1dfcc;
 
   --space-inline: clamp(1.25rem, 2vw, 2.5rem);
   --space-block: clamp(1.5rem, 2.75vw, 3rem);
