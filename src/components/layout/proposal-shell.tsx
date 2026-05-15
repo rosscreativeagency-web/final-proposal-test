@@ -13,3 +13,7 @@ export function ProposalShell({ children }: { children: React.ReactNode }) {
 export function ProposalContent({ children }: { children: React.ReactNode }) {
   return <section className="mx-auto max-w-6xl px-6 pb-[var(--space-section)]">{children}</section>;
 }
+
+export function ProposalBleed({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <section className={`proposal-bleed ${className}`.trim()}>{children}</section>;
+}

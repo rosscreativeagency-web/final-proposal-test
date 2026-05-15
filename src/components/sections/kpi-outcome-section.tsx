@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ProposalBleed } from "@/components/layout/proposal-shell";
 import { ChapterTransition, Reveal } from "@/components/motion/primitives";
 import { ChapterDivider } from "@/components/visual/chapter-divider";
 import { IconDiagramZonePlaceholder } from "@/components/visual/media-placeholders";
@@ -20,9 +21,12 @@ export function KpiOutcomeSection({ kpi, outcome, index }: { kpi: Chapter; outco
           <p className="max-w-4xl text-zinc-100/95">{outcome.persianNarrative}</p>
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-1">
-          <IconDiagramZonePlaceholder />
-        </div>
+        <ProposalBleed className="chapter-overlap-top">
+          <div className="grid gap-6 md:grid-cols-[1.35fr_0.8fr]">
+            <IconDiagramZonePlaceholder />
+            <div className="hidden md:block rounded-[2rem] border border-white/20 bg-white/5" />
+          </div>
+        </ProposalBleed>
 
         <div className="grid gap-10 md:grid-cols-[1.1fr_1fr]">
           {kpiSection ? (

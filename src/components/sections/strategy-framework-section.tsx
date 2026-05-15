@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ChapterTransition, Reveal } from "@/components/motion/primitives";
+import { ProposalBleed } from "@/components/layout/proposal-shell";
 import { ChapterDivider } from "@/components/visual/chapter-divider";
 import { type BulletSection, type Chapter } from "@/data/proposal";
 
@@ -28,29 +29,31 @@ export function StrategyFrameworkSection({ chapter, index }: { chapter: Chapter;
           ) : null}
         </Reveal>
 
-        <div className="overflow-x-auto pb-2">
-          <div className="flex min-w-[720px] items-stretch gap-4">
-            {steps.map((step, idx) => (
-              <motion.article
-                key={step.englishHeading}
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.75, delay: idx * 0.2 }}
-                className="flex-1 border-t border-white/25 pt-5"
-              >
-                <p className="text-xs uppercase tracking-[0.2em] text-zinc-400">Step {idx + 1}</p>
-                <h3 className="mt-3 text-2xl font-semibold">{step.englishHeading}</h3>
-                {step.persianLead ? <p className="mt-3 text-zinc-300">{step.persianLead}</p> : null}
-                <ul className="mt-4 space-y-2 text-sm text-zinc-200 md:text-base">
-                  {step.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-              </motion.article>
-            ))}
+        <ProposalBleed className="chapter-overlap-bottom">
+          <div className="overflow-x-auto pb-2">
+            <div className="grid min-w-[920px] items-start gap-5 md:grid-cols-[1.2fr_1fr_1.15fr]">
+              {steps.map((step, idx) => (
+                <motion.article
+                  key={step.englishHeading}
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.75, delay: idx * 0.2 }}
+                  className={`border-t border-white/25 bg-white/5 p-5 ${idx % 2 ? "md:mt-12" : ""}`}
+                >
+                  <p className="text-xs uppercase tracking-[0.2em] text-zinc-400">Step {idx + 1}</p>
+                  <h3 className="mt-3 text-2xl font-semibold">{step.englishHeading}</h3>
+                  {step.persianLead ? <p className="mt-3 text-zinc-300">{step.persianLead}</p> : null}
+                  <ul className="mt-4 space-y-2 text-sm text-zinc-200 md:text-base">
+                    {step.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                </motion.article>
+              ))}
+            </div>
           </div>
-        </div>
+        </ProposalBleed>
       </ChapterTransition>
     </section>
   );
