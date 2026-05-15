@@ -50,19 +50,20 @@ export default function Home() {
       <IntroSection intro={intro} />
       <ProposalContent>
         {defaultChapters.map((chapter, chapterIndex) => (
-          <section key={chapter.id} className="space-y-8 py-2">
+          <section key={chapter.id} className="space-y-10 py-6">
             <ChapterDivider chapter={chapter.englishTitle} index={chapterIndex + 2} tone={chapterIndex % 2 === 0 ? "calm" : "energetic"} />
             <ChapterTransition className="space-y-6">
-              <Reveal className="grid gap-6 md:grid-cols-[1.2fr_1fr] md:items-start">
+              <Reveal className="editorial-grid items-start">
                 <div>
-                  <h2 className="text-3xl font-semibold">{chapter.englishTitle}</h2>
-                  {chapter.persianNarrative ? <p className="mt-5 text-lg leading-10 text-[var(--text-primary)]/95">{chapter.persianNarrative}</p> : null}
+                  <h2 className="text-3xl font-semibold text-[#322b26] md:text-5xl">{chapter.englishTitle}</h2>
+                  {chapter.persianNarrative ? <p className="mt-5 max-w-4xl text-lg leading-10 text-[var(--text-primary)]">{chapter.persianNarrative}</p> : null}
                 </div>
+                <div className="border-s border-[#c9b8a7]/55 ps-6 text-sm leading-8 text-[var(--text-secondary)] md:mt-14 md:text-base">Chapter focus with layered storytelling, campaign logic, and editorial motion pacing.</div>
               </Reveal>
-              <div className="grid gap-8 md:grid-cols-2">
+              <div className="grid gap-x-16 gap-y-10 md:grid-cols-2">
                 {(chapter.sections ?? []).map((section, sectionIndex) => (
-                  <Reveal key={`${chapter.id}-${section.englishHeading}`} className={sectionIndex % 2 ? "md:pt-8" : ""}>
-                    <h3 className="text-2xl font-semibold">{section.englishHeading}</h3>
+                  <Reveal key={`${chapter.id}-${section.englishHeading}`} className={`relative ${sectionIndex % 2 ? "md:pt-12 md:-translate-x-6" : "md:translate-x-4"}`}>
+                    <h3 className="text-2xl font-semibold text-[#3f3530]">{section.englishHeading}</h3>
                     {section.persianLead ? <p className="mt-4 leading-9 text-[var(--text-secondary)]">{section.persianLead}</p> : null}
                     <ul>{renderBullets(section.bullets)}</ul>
                   </Reveal>

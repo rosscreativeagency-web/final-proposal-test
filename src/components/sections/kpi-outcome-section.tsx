@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Activity, BarChart3, Compass, Users } from "lucide-react";
 import { ProposalBleed } from "@/components/layout/proposal-shell";
 import { ChapterTransition, Reveal } from "@/components/motion/primitives";
 import { ChapterDivider } from "@/components/visual/chapter-divider";
@@ -10,6 +11,7 @@ import { type Chapter } from "@/data/proposal";
 export function KpiOutcomeSection({ kpi, outcome, index }: { kpi: Chapter; outcome: Chapter; index: number }) {
   const kpiSection = kpi.sections?.[0];
   const outcomeSection = outcome.sections?.[0];
+  const icons = [BarChart3, Users, Compass, Activity];
 
   return (
     <section className="space-y-8">
@@ -48,9 +50,13 @@ export function KpiOutcomeSection({ kpi, outcome, index }: { kpi: Chapter; outco
                   </div>
                 ) : null}
                 {kpiSection.bullets.slice(1).length ? (
-                  <div className="space-y-3 border-s border-white/25 ps-4">
+                  <div className="space-y-3 border-s border-[#d2c2b2] ps-4">
                     {kpiSection.bullets.slice(1).map((metric, metricIndex) => (
                       <div key={metric} className="flex items-baseline gap-3 border-b border-white/10 pb-2 last:border-none last:pb-0">
+                        <span className="rounded-full bg-[#f2e6db] p-1.5 text-[#6f5e51]">{(() => {
+                          const Icon = icons[metricIndex % icons.length];
+                          return <Icon size={14} strokeWidth={1.8} />;
+                        })()}</span>
                         <span className="text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]/70">{String(metricIndex + 1).padStart(2, "0")}</span>
                         <p className="text-lg font-medium text-[var(--text-kpi)] md:text-xl">{metric}</p>
                       </div>

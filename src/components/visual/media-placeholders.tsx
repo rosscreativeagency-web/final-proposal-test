@@ -51,13 +51,15 @@ function BasePlaceholder({ title, persianLabel, tone, kind }: PlaceholderProps) 
     <motion.figure
       initial={{ opacity: 0, y: 22 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -6, rotateX: 2.5, rotateY: -2.5, scale: 1.01 }}
       viewport={{ once: true, amount: 0.28 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`relative isolate overflow-hidden rounded-[2rem] border p-5 text-[#3e3a35] shadow-[0_16px_40px_rgba(137,117,89,0.11)] ${classes.shell}`}
     >
       <div className={`absolute -left-10 top-5 h-32 w-32 rounded-[44%_56%_63%_37%/42%_35%_65%_58%] blur-xl ${classes.blobA}`} />
       <div className={`absolute -bottom-8 right-2 h-36 w-36 rounded-[54%_46%_35%_65%/60%_40%_60%_40%] blur-xl ${classes.blobB}`} />
 
-      <div className="relative rounded-3xl border border-[#ffffff]/70 bg-[#fffdf9]/85 p-4">
+      <motion.div className="relative rounded-3xl border border-[#ffffff]/70 bg-[#fffdf9]/85 p-4" whileHover={{ scale: 1.02 }} transition={{ duration: 0.5 }}>
         <svg viewBox="0 0 320 180" className="h-48 w-full" role="img" aria-label={persianLabel}>
           {kind === "organic" ? (
             <>
@@ -107,7 +109,7 @@ function BasePlaceholder({ title, persianLabel, tone, kind }: PlaceholderProps) 
             </>
           ) : null}
         </svg>
-      </div>
+      </motion.div>
 
       <figcaption className="relative mt-3 space-y-1">
         <p className="text-xs uppercase tracking-[0.18em] text-[#8f8172]">{title}</p>

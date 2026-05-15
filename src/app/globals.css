@@ -10,10 +10,10 @@
   --color-accent-mint: #b8cfc6;
   --color-surface: #fbf7f1;
   --color-surface-soft: #f1e8dc;
-  --text-primary: #f6efe7;
-  --text-secondary: #dfd0bf;
-  --text-muted: #c0ac97;
-  --text-kpi: #f1dfcc;
+  --text-primary: #5b4b41;
+  --text-secondary: #726055;
+  --text-muted: #947f70;
+  --text-kpi: #4f3f35;
 
   --space-inline: clamp(1.25rem, 2vw, 2.5rem);
   --space-block: clamp(1.5rem, 2.75vw, 3rem);
@@ -56,4 +56,26 @@ body {
 
 .chapter-overlap-bottom {
   margin-bottom: clamp(-4rem, -5.5vw, -1.5rem);
+}
+
+.editorial-grid {
+  display: grid;
+  gap: clamp(1.5rem, 2.5vw, 2.5rem);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 960px) {
+  .editorial-grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+  }
+}
+
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.15;
+  background-image: radial-gradient(rgba(116, 98, 82, 0.35) 0.45px, transparent 0.45px);
+  background-size: 3px 3px;
+  mix-blend-mode: soft-light;
 }
