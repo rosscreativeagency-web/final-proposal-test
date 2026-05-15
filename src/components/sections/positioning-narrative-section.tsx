@@ -42,24 +42,47 @@ export function PositioningNarrativeSection({ chapter, index }: { chapter: Chapt
           </div>
         </ProposalBleed>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          {[endorsement, campaign].map((section, idx) =>
-            section ? (
-              <motion.div
-                key={section.englishHeading}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.35 }}
-                transition={{ type: "spring", stiffness: 120, damping: 18, delay: idx * 0.12 }}
-                className="bg-white/5 p-6"
-              >
-                <p className="text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]/80">Flow block {idx + 1}</p>
-                <h3 className="mt-2 text-2xl font-semibold">{section.englishHeading}</h3>
-                {section.persianLead ? <p className="mt-3 leading-9 text-[var(--text-secondary)]">{section.persianLead}</p> : null}
-                <ul className="mt-4 space-y-2 text-sm leading-8 text-[var(--text-secondary)] md:text-base">{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
-              </motion.div>
-            ) : null,
-          )}
+        <div className="grid gap-8 md:grid-cols-2">
+          {endorsement ? (
+            <motion.div
+              key={endorsement.englishHeading}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ type: "spring", stiffness: 120, damping: 18 }}
+              className="bg-white/5 p-6"
+            >
+              <p className="text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]/80">Flow block 1</p>
+              <h3 className="mt-2 text-2xl font-semibold">{endorsement.englishHeading}</h3>
+              {endorsement.persianLead ? <p className="mt-3 leading-9 text-[var(--text-secondary)]">{endorsement.persianLead}</p> : null}
+              <ul className="mt-4 space-y-2 text-sm leading-8 text-[var(--text-secondary)] md:text-base">{endorsement.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+            </motion.div>
+          ) : null}
+          {campaign ? (
+            <motion.blockquote
+              key={campaign.englishHeading}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ type: "spring", stiffness: 120, damping: 18, delay: 0.12 }}
+              className="relative border-s-2 border-white/30 ps-6"
+            >
+              <p className="text-xs uppercase tracking-[0.22em] text-[var(--text-muted)]/80">Timeline highlight</p>
+              <h3 className="mt-3 text-2xl font-semibold">{campaign.englishHeading}</h3>
+              {campaign.persianLead ? <p className="mt-4 leading-9 text-[var(--text-secondary)]">{campaign.persianLead}</p> : null}
+              <ul className="mt-5 space-y-4 text-sm leading-8 text-[var(--text-secondary)] md:text-base">
+                {campaign.bullets.map((bullet, bulletIndex) => (
+                  <li key={bullet} className="flex items-start gap-3">
+                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--text-kpi)]/85" />
+                    <span>
+                      <span className="me-2 text-xs uppercase tracking-[0.16em] text-[var(--text-muted)]/70">{String(bulletIndex + 1).padStart(2, "0")}</span>
+                      {bullet}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </motion.blockquote>
+          ) : null}
         </div>
       </ChapterTransition>
     </section>
