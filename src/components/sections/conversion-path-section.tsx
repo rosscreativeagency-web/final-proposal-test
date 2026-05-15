@@ -45,7 +45,21 @@ export function ConversionPathSection({ advertising, sell, index }: { advertisin
             >
               <h3 className="text-xl font-semibold">{section.englishHeading}</h3>
               {section.persianLead ? <p className="mt-3 leading-9 text-[var(--text-secondary)]">{section.persianLead}</p> : null}
-              <ul className="mt-3 space-y-2 text-sm leading-8 text-[var(--text-secondary)] md:text-base">{section.bullets.map((bullet) => <li key={bullet}>• {bullet}</li>)}</ul>
+              {idx === 0 ? (
+                <div className="mt-4 border-y border-white/15 py-4">
+                  <p className="text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]/75">Narrative strip</p>
+                  <div className="mt-3 space-y-3 text-sm leading-8 text-[var(--text-secondary)] md:text-base">
+                    {section.bullets.map((bullet, bulletIndex) => (
+                      <p key={bullet} className="flex gap-3">
+                        <span className="text-[var(--text-kpi)]/90">{String(bulletIndex + 1).padStart(2, "0")}</span>
+                        <span className="border-s border-white/20 ps-3">{bullet}</span>
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <ul className="mt-3 space-y-2 text-sm leading-8 text-[var(--text-secondary)] md:text-base">{section.bullets.map((bullet) => <li key={bullet}>• {bullet}</li>)}</ul>
+              )}
             </motion.article>
           ))}
           {sellSections.map((section, idx) => (
