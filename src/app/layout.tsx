@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { ProgressIndicator } from "@/components/motion/progress-indicator";
+import { LenisProvider } from "@/components/providers/lenis-provider";
 import "./globals.css";
 
 const peyda = localFont({
@@ -29,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={`${peyda.variable} antialiased`}>{children}</body>
+      <body className={`${peyda.variable} antialiased`}><LenisProvider><ProgressIndicator />{children}</LenisProvider></body>
     </html>
   );
 }
