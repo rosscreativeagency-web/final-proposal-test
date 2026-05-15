@@ -39,3 +39,17 @@ body {
   direction: ltr;
   unicode-bidi: isolate;
 }
+
+.proposal-bleed {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  padding-inline: var(--space-inline);
+}
+
+.chapter-overlap-top {
+  margin-top: clamp(-4.5rem, -6vw, -2rem);
+}
+
+.chapter-overlap-bottom {
+  margin-bottom: clamp(-4rem, -5.5vw, -1.5rem);
+}

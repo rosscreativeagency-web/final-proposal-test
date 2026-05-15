@@ -1,6 +1,6 @@
 "use client";
 
-import { ProposalContent, ProposalShell } from "@/components/layout/proposal-shell";
+import { ProposalBleed, ProposalContent, ProposalShell } from "@/components/layout/proposal-shell";
 import { ChapterTransition, Reveal, Stagger, StaggerItem } from "@/components/motion/primitives";
 import { AudienceSplitSection } from "@/components/sections/audience-split-section";
 import { ConversionPathSection } from "@/components/sections/conversion-path-section";
@@ -68,6 +68,14 @@ export default function Home() {
                   </Reveal>
                 ))}
               </div>
+              {chapter.id === "awareness" ? (
+                <ProposalBleed className="chapter-overlap-top">
+                  <div className="grid gap-4 rounded-[2rem] border border-white/15 bg-white/5 p-6 md:grid-cols-[1.3fr_0.85fr]">
+                    <div className="min-h-36 rounded-[1.25rem] border border-white/15 bg-white/10" />
+                    <div className="min-h-28 rounded-[1.25rem] border border-white/15 bg-white/10 md:mt-10" />
+                  </div>
+                </ProposalBleed>
+              ) : null}
             </ChapterTransition>
           </section>
         ))}

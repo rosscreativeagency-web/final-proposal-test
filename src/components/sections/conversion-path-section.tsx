@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ProposalBleed } from "@/components/layout/proposal-shell";
 import { ChapterTransition, Reveal } from "@/components/motion/primitives";
 import { ChapterDivider } from "@/components/visual/chapter-divider";
 import { CampaignMockupZonePlaceholder, ProductShotZonePlaceholder } from "@/components/visual/media-placeholders";
@@ -25,10 +26,14 @@ export function ConversionPathSection({ advertising, sell, index }: { advertisin
           </div>
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <CampaignMockupZonePlaceholder />
-          <ProductShotZonePlaceholder />
-        </div>
+        <ProposalBleed>
+          <div className="grid gap-6 md:grid-cols-[1.2fr_0.9fr]">
+            <CampaignMockupZonePlaceholder />
+            <div className="md:pt-12">
+              <ProductShotZonePlaceholder />
+            </div>
+          </div>
+        </ProposalBleed>
 
         <motion.div className="grid gap-4 md:grid-cols-2" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
           {adSections.map((section, idx) => (

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ChapterTransition, Reveal } from "@/components/motion/primitives";
+import { ProposalBleed } from "@/components/layout/proposal-shell";
 import { ChapterDivider } from "@/components/visual/chapter-divider";
 import { LayeredEditorialStackPlaceholder } from "@/components/visual/media-placeholders";
 import { type Chapter } from "@/data/proposal";
@@ -19,24 +20,27 @@ export function PositioningNarrativeSection({ chapter, index }: { chapter: Chapt
           {phase ? <p className="text-zinc-200">{phase.persianLead}</p> : null}
         </Reveal>
 
-        <div className="grid gap-8 md:grid-cols-[1fr_1.25fr]">
-          <LayeredEditorialStackPlaceholder />
-          {[goals, methods].map((section) =>
-            section ? (
-              <motion.div
-                key={section.englishHeading}
-                initial={{ opacity: 0, scale: 0.96 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.35 }}
-                transition={{ duration: 0.7 }}
-              >
-                <h3 className="text-2xl font-semibold">{section.englishHeading}</h3>
-                {section.persianLead ? <p className="mt-3 text-zinc-300">{section.persianLead}</p> : null}
-                <ul className="mt-4 space-y-2 text-sm text-zinc-200 md:text-base">{section.bullets.map((bullet) => <li key={bullet}>• {bullet}</li>)}</ul>
-              </motion.div>
-            ) : null,
-          )}
-        </div>
+        <ProposalBleed className="chapter-overlap-top">
+          <div className="grid gap-8 md:grid-cols-[1.25fr_1fr_1.1fr]">
+            <LayeredEditorialStackPlaceholder />
+            {[goals, methods].map((section, idx) =>
+              section ? (
+                <motion.div
+                  key={section.englishHeading}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, amount: 0.35 }}
+                  transition={{ duration: 0.7 }}
+                  className={idx ? "md:mt-14" : ""}
+                >
+                  <h3 className="text-2xl font-semibold">{section.englishHeading}</h3>
+                  {section.persianLead ? <p className="mt-3 text-zinc-300">{section.persianLead}</p> : null}
+                  <ul className="mt-4 space-y-2 text-sm text-zinc-200 md:text-base">{section.bullets.map((bullet) => <li key={bullet}>• {bullet}</li>)}</ul>
+                </motion.div>
+              ) : null,
+            )}
+          </div>
+        </ProposalBleed>
 
         <div className="grid gap-4 md:grid-cols-2">
           {[endorsement, campaign].map((section, idx) =>
