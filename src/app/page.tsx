@@ -2,7 +2,12 @@
 
 import { ProposalContent, ProposalShell } from "@/components/layout/proposal-shell";
 import { ChapterTransition, Reveal, Stagger, StaggerItem } from "@/components/motion/primitives";
+import { AudienceSplitSection } from "@/components/sections/audience-split-section";
+import { ConversionPathSection } from "@/components/sections/conversion-path-section";
 import { IntroSection } from "@/components/sections/intro-section";
+import { KpiOutcomeSection } from "@/components/sections/kpi-outcome-section";
+import { PositioningNarrativeSection } from "@/components/sections/positioning-narrative-section";
+import { StrategyFrameworkSection } from "@/components/sections/strategy-framework-section";
 import { ChapterDivider } from "@/components/visual/chapter-divider";
 import { proposalChapters } from "@/data/proposal";
 import { assertRequiredSectionCoverage } from "@/lib/content-coverage";
@@ -12,7 +17,9 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const intro = proposalChapters.find((chapter) => chapter.id === "introduction");
-const renderChapters = proposalChapters.filter((chapter) => chapter.id !== "introduction");
+const chapterById = new Map(proposalChapters.map((chapter) => [chapter.id, chapter]));
+const customRenderedIds = new Set(["audience", "structure", "positioning", "advertising", "sell", "kpi", "outcome"]);
+const defaultChapters = proposalChapters.filter((chapter) => chapter.id !== "introduction" && !customRenderedIds.has(chapter.id));
 
 const renderBullets = (items: string[]) => (
   <Stagger className="mt-4 space-y-2 text-sm leading-7 text-zinc-200 md:text-base">
@@ -28,32 +35,48 @@ const renderBullets = (items: string[]) => (
 );
 
 export default function Home() {
-  if (!intro) {
-    throw new Error("Introduction chapter is missing from proposal data.");
-  }
+  if (!intro) throw new Error("Introduction chapter is missing from proposal data.");
+
+  const audience = chapterById.get("audience");
+  const structure = chapterById.get("structure");
+  const positioning = chapterById.get("positioning");
+  const advertising = chapterById.get("advertising");
+  const sell = chapterById.get("sell");
+  const kpi = chapterById.get("kpi");
+  const outcome = chapterById.get("outcome");
 
   return (
     <ProposalShell>
       <IntroSection intro={intro} />
       <ProposalContent>
-        {renderChapters.map((chapter, chapterIndex) => (
-          <section key={chapter.id} className="space-y-8">
+        {defaultChapters.map((chapter, chapterIndex) => (
+          <section key={chapter.id} className="space-y-8 py-2">
             <ChapterDivider chapter={chapter.englishTitle} index={chapterIndex + 2} tone={chapterIndex % 2 === 0 ? "calm" : "energetic"} />
-            <ChapterTransition className="grid gap-6 md:grid-cols-2">
-              <Reveal className="rounded-3xl border border-white/15 bg-white/10 p-8 shadow-sm backdrop-blur-sm md:col-span-2">
-                <h2 className="text-3xl font-semibold">{chapter.englishTitle}</h2>
-                {chapter.persianNarrative ? <p className="mt-5 text-lg leading-9 text-zinc-100/95">{chapter.persianNarrative}</p> : null}
+            <ChapterTransition className="space-y-6">
+              <Reveal className="grid gap-6 md:grid-cols-[1.2fr_1fr] md:items-start">
+                <div>
+                  <h2 className="text-3xl font-semibold">{chapter.englishTitle}</h2>
+                  {chapter.persianNarrative ? <p className="mt-5 text-lg leading-9 text-zinc-100/95">{chapter.persianNarrative}</p> : null}
+                </div>
               </Reveal>
-              {(chapter.sections ?? []).map((section) => (
-                <Reveal key={`${chapter.id}-${section.englishHeading}`} className="rounded-3xl border border-white/15 bg-black/25 p-8 text-zinc-100 backdrop-blur-sm">
-                  <h3 className="text-2xl font-semibold">{section.englishHeading}</h3>
-                  {section.persianLead ? <p className="mt-4 text-zinc-200">{section.persianLead}</p> : null}
-                  <ul>{renderBullets(section.bullets)}</ul>
-                </Reveal>
-              ))}
+              <div className="grid gap-8 md:grid-cols-2">
+                {(chapter.sections ?? []).map((section, sectionIndex) => (
+                  <Reveal key={`${chapter.id}-${section.englishHeading}`} className={sectionIndex % 2 ? "md:pt-8" : ""}>
+                    <h3 className="text-2xl font-semibold">{section.englishHeading}</h3>
+                    {section.persianLead ? <p className="mt-4 text-zinc-200">{section.persianLead}</p> : null}
+                    <ul>{renderBullets(section.bullets)}</ul>
+                  </Reveal>
+                ))}
+              </div>
             </ChapterTransition>
           </section>
         ))}
+
+        {audience ? <AudienceSplitSection chapter={audience} index={6} /> : null}
+        {structure ? <StrategyFrameworkSection chapter={structure} index={7} /> : null}
+        {positioning ? <PositioningNarrativeSection chapter={positioning} index={8} /> : null}
+        {advertising && sell ? <ConversionPathSection advertising={advertising} sell={sell} index={9} /> : null}
+        {kpi && outcome ? <KpiOutcomeSection kpi={kpi} outcome={outcome} index={10} /> : null}
       </ProposalContent>
     </ProposalShell>
   );
