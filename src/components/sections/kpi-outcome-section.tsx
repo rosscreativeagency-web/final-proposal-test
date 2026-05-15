@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ChapterTransition, Reveal } from "@/components/motion/primitives";
 import { ChapterDivider } from "@/components/visual/chapter-divider";
+import { IconDiagramZonePlaceholder } from "@/components/visual/media-placeholders";
 import { type Chapter } from "@/data/proposal";
 
 export function KpiOutcomeSection({ kpi, outcome, index }: { kpi: Chapter; outcome: Chapter; index: number }) {
@@ -18,6 +19,10 @@ export function KpiOutcomeSection({ kpi, outcome, index }: { kpi: Chapter; outco
           <p className="max-w-4xl text-zinc-100/95">{kpi.persianNarrative}</p>
           <p className="max-w-4xl text-zinc-100/95">{outcome.persianNarrative}</p>
         </Reveal>
+
+        <div className="grid gap-6 md:grid-cols-1">
+          <IconDiagramZonePlaceholder />
+        </div>
 
         <div className="grid gap-10 md:grid-cols-[1.1fr_1fr]">
           {kpiSection ? (
