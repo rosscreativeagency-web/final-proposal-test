@@ -11,7 +11,7 @@ export function ProposalShell({ children }: { children: React.ReactNode }) {
 }
 
 export function ProposalContent({ children }: { children: React.ReactNode }) {
-  return <section className="mx-auto max-w-6xl px-6 pb-[var(--space-section)]">{children}</section>;
+  return <section className="mx-auto w-[min(95vw,1600px)] px-5 pb-[var(--space-section)] md:px-8">{children}</section>;
 }
 
 export function ProposalBleed({ children, className = "" }: { children: React.ReactNode; className?: string }) {
